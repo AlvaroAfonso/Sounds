@@ -58,9 +58,12 @@ void draw(){
         
     for(int i = 0; i < walls.length; i++){
       collide = walls[i].collide(ballX, ballY);
+      if(collide){
+        break;
+      }
     }
     
-    println(collide);
+    //println(collide);
 
     
     if(!collide){
@@ -94,6 +97,7 @@ void draw(){
      
      if(start){
        textMode(LEFT);
+       textSize(40);
        text("Enter to start", width/2 - 170, height/2);
      }else{
        textSize(40);
@@ -104,11 +108,11 @@ void draw(){
     }else{
       textSize(80);
       textMode(LEFT);
-      text("PERDISTE!!!", width/2 - 100, height/2 - 50);
-      text("Enter to restart", 350, height/2 + 50);
+      text("You lost!!!", width/2 - 200, height/2 - 50);
+      text("Enter to restart", width/2 - 300, height/2 + 50);
     }
   }
-   
+   //gifExport.addFrame();
 }
 
 void keyPressed(){
@@ -119,6 +123,7 @@ void keyPressed(){
    start = true;
    ballX = 50;
    ballY = height/2;
+   points = 0;
    
    fill(0);
    
@@ -133,4 +138,5 @@ void keyPressed(){
  }else if(keyCode == ENTER && start){
   start = false; 
  }
+ 
 }
